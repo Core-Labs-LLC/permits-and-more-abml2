@@ -1,0 +1,419 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="About Permits & More - San Diego's premier permit processing experts. Learn about our team and mission.">
+  <meta name="keywords" content="about, permits, construction permits, San Diego, California, permit services">
+  <meta name="author" content="Permits & More">
+  <meta property="og:title" content="About Us - Permits & More">
+  <meta property="og:description" content="Learn about Permits & More and our commitment to simplifying the permit process">
+  <meta property="og:type" content="website">
+  <title>About Us - Permits & More</title>
+
+  <!-- Preconnect for performance -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+  <!-- Premium Font Pairing: Outfit (modern geometric) + Instrument Serif (elegant display) -->
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&family=Instrument+Serif:ital@0;1&display=swap" rel="stylesheet">
+
+  <!-- Tailwind CSS -->
+  <script src="https://cdn.tailwindcss.com"></script>
+
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            brand: {
+              50: '#eff6ff',
+              100: '#dbeafe',
+              200: '#bfdbfe',
+              300: '#93c5fd',
+              400: '#60a5fa',
+              500: '#3B82F6',
+              600: '#2563eb',
+              700: '#1d4ed8',
+              800: '#1e40af',
+              900: '#1e3a8a',
+            },
+            neutral: {
+              850: '#1a1a1a',
+              950: '#0a0a0a',
+            }
+          },
+          fontFamily: {
+            sans: ['Outfit', 'system-ui', 'sans-serif'],
+            serif: ['Instrument Serif', 'Georgia', 'serif'],
+          },
+        }
+      }
+    }
+  </script>
+
+  <style>
+    * { box-sizing: border-box; }
+    ::-webkit-scrollbar { width: 8px; }
+    ::-webkit-scrollbar-track { background: #f1f1f1; }
+    ::-webkit-scrollbar-thumb { background: #3B82F6; border-radius: 4px; }
+    ::-webkit-scrollbar-thumb:hover { background: #2563eb; }
+    html { scroll-behavior: smooth; }
+    body { font-family: 'Outfit', sans-serif; margin: 0; overflow-x: hidden; -webkit-font-smoothing: antialiased; }
+    .font-serif { font-family: 'Instrument Serif', Georgia, serif; }
+    .btn-primary { position: relative; overflow: hidden; background: #3B82F6; transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1); }
+    .btn-primary:hover { background: #2563eb; transform: translateY(-2px); box-shadow: 0 20px 40px -10px rgba(59, 130, 246, 0.4); }
+    .card-hover { transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1); }
+    .card-hover:hover { transform: translateY(-8px); box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.15); }
+    .link-underline { position: relative; }
+    .link-underline::after { content: ''; position: absolute; bottom: -2px; left: 0; width: 0; height: 1.5px; background: currentColor; transition: width 0.3s ease; }
+    .link-underline:hover::after { width: 100%; }
+    .animate-on-scroll { opacity: 0; transform: translateY(40px); transition: all 0.8s cubic-bezier(0.4, 0, 0.2, 1); }
+    .animate-on-scroll.visible { opacity: 1; transform: translateY(0); }
+    .animate-on-scroll.delay-1 { transition-delay: 0.1s; }
+    .animate-on-scroll.delay-2 { transition-delay: 0.2s; }
+    .animate-on-scroll.delay-3 { transition-delay: 0.3s; }
+    .divider-gradient { height: 1px; background: linear-gradient(90deg, transparent, rgba(59, 130, 246, 0.3), transparent); }
+    .mobile-menu-overlay { backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px); }
+    .icon-gradient { background: linear-gradient(135deg, #eff6ff 0%, #dbeafe 100%); }
+  </style>
+</head>
+
+<body class="bg-white text-neutral-850">
+
+  <!-- Header Navigation -->
+  <header id="header" class="fixed top-0 left-0 right-0 z-[110] bg-white shadow-sm transition-all duration-500">
+    <div class="max-w-7xl mx-auto px-6 lg:px-8">
+      <div class="flex items-center justify-between h-16 lg:h-24">
+        <!-- Logo -->
+        <a href="index.html" class="relative z-10 flex-shrink-0">
+          <img src="https://i0.wp.com/permitsandmore.com/wp-content/uploads/2016/06/cropped-logo-1.png?fit=263%2C60&ssl=1" alt="Permits & More" class="h-10 lg:h-14 w-auto transition-all duration-300" id="header-logo">
+        </a>
+
+        <!-- Desktop Navigation -->
+        <nav class="hidden md:flex items-center gap-6 lg:gap-8">
+          <a href="about.html" class="nav-link link-underline text-sm font-medium tracking-wide uppercase text-brand-500 transition-colors duration-300">About</a>
+          <a href="services.html" class="nav-link link-underline text-sm font-medium tracking-wide uppercase text-neutral-700 hover:text-brand-500 transition-colors duration-300">Services</a>
+          <a href="work.html" class="nav-link link-underline text-sm font-medium tracking-wide uppercase text-neutral-700 hover:text-brand-500 transition-colors duration-300">Projects</a>
+          <a href="newsletter.html" class="nav-link link-underline text-sm font-medium tracking-wide uppercase text-neutral-700 hover:text-brand-500 transition-colors duration-300">Newsletter</a>
+          <a href="reviews.html" class="nav-link link-underline text-sm font-medium tracking-wide uppercase text-neutral-700 hover:text-brand-500 transition-colors duration-300">Reviews</a>
+          <a href="contact.html" class="nav-link link-underline text-sm font-medium tracking-wide uppercase text-neutral-700 hover:text-brand-500 transition-colors duration-300">Contact</a>
+        </nav>
+
+        <!-- Mobile Menu Button -->
+        <button id="mobile-menu-btn" class="md:hidden relative z-10 w-12 h-12 flex items-center justify-center overflow-visible" aria-label="Toggle menu">
+          <div class="relative w-6 h-5 flex flex-col justify-between" id="hamburger">
+            <span class="block w-6 h-0.5 bg-neutral-700 transition-all duration-300 origin-center absolute top-0 left-0" id="line1"></span>
+            <span class="block w-6 h-0.5 bg-neutral-700 transition-all duration-300 absolute top-1/2 left-0 -translate-y-1/2" id="line2"></span>
+            <span class="block w-4 h-0.5 bg-neutral-700 transition-all duration-300 origin-center absolute bottom-0 left-0" id="line3"></span>
+          </div>
+        </button>
+      </div>
+    </div>
+
+    <!-- Mobile Menu Overlay -->
+    <div id="mobile-menu" class="fixed top-16 left-0 right-0 bottom-0 bg-white mobile-menu-overlay opacity-0 pointer-events-none transition-opacity duration-300 ease-out md:hidden" style="z-index: 100;">
+      <div class="flex flex-col items-center justify-start h-full gap-5 pt-12">
+        <a href="index.html" class="mobile-nav-link text-2xl font-light tracking-wide text-neutral-800 hover:text-brand-500 transition-all duration-300 translate-y-4 opacity-0 text-center">Home</a>
+        <a href="about.html" class="mobile-nav-link text-2xl font-light tracking-wide text-brand-500 transition-all duration-300 translate-y-4 opacity-0 text-center">About</a>
+        <a href="services.html" class="mobile-nav-link text-2xl font-light tracking-wide text-neutral-800 hover:text-brand-500 transition-all duration-300 translate-y-4 opacity-0 text-center">Services</a>
+        <a href="work.html" class="mobile-nav-link text-2xl font-light tracking-wide text-neutral-800 hover:text-brand-500 transition-all duration-300 translate-y-4 opacity-0 text-center">Projects</a>
+        <a href="newsletter.html" class="mobile-nav-link text-2xl font-light tracking-wide text-neutral-800 hover:text-brand-500 transition-all duration-300 translate-y-4 opacity-0 text-center">Newsletter</a>
+        <a href="reviews.html" class="mobile-nav-link text-2xl font-light tracking-wide text-neutral-800 hover:text-brand-500 transition-all duration-300 translate-y-4 opacity-0 text-center">Reviews</a>
+        <a href="contact.html" class="mobile-nav-link text-2xl font-light tracking-wide text-neutral-800 hover:text-brand-500 transition-all duration-300 translate-y-4 opacity-0 text-center">Contact</a>
+      </div>
+    </div>
+  </header>
+
+  <!-- Page Hero -->
+  <section class="pt-32 lg:pt-40 pb-16 lg:pb-20 bg-neutral-50">
+    <div class="max-w-7xl mx-auto px-6 lg:px-8 text-center">
+      <p class="text-brand-500 text-sm font-medium tracking-[0.2em] uppercase mb-4">Who We Are</p>
+      <h1 class="text-4xl md:text-5xl lg:text-6xl leading-tight">
+        <span class="font-medium">About</span>
+        <span class="font-serif italic text-brand-500"> Permits & More</span>
+      </h1>
+      <p class="text-lg text-neutral-600 max-w-2xl mx-auto mt-6">
+        Your trusted partner for exceptional engineering and permit services throughout Southern California.
+      </p>
+    </div>
+  </section>
+
+  <!-- About Content Section -->
+  <section class="py-20 lg:py-28 bg-white">
+    <div class="max-w-7xl mx-auto px-6 lg:px-8">
+      <div class="grid lg:grid-cols-2 gap-16 lg:gap-24 items-center">
+        <!-- Left: Image -->
+        <div class="animate-on-scroll">
+          <div class="relative">
+            <img src="https://images.unsplash.com/photo-1504307651254-35680f356dfd?q=80&w=2676&auto=format&fit=crop" alt="Professional team reviewing construction permits and blueprints" class="w-full aspect-[4/5] object-cover rounded-2xl shadow-xl">
+            <!-- Floating Stats Card -->
+            <div class="absolute -bottom-8 -right-8 bg-white rounded-2xl shadow-2xl p-6 lg:p-8 card-hover">
+              <div class="text-4xl lg:text-5xl font-light text-brand-500 stat-number" data-target="5" data-suffix="+">0</div>
+              <div class="text-sm text-neutral-600 mt-1">Years of Excellence</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Right: Content -->
+        <div>
+          <h2 class="text-3xl md:text-4xl leading-tight mb-6 animate-on-scroll">
+            <span class="font-medium">Your Partner in</span>
+            <span class="font-serif italic block">Permit Excellence</span>
+          </h2>
+          <div class="space-y-4 text-neutral-700 leading-relaxed animate-on-scroll delay-1">
+            <p>
+              Permits & More provides exceptional engineering services designed to move your project seamlessly from concept through design to full permit approval. We've built our reputation on precision, reliability, and an unwavering commitment to meeting your timelines.
+            </p>
+            <p>
+              Our mission is to simplify what is often a long and complex permitting process. Serving the City of San Diego, the County of San Diego, and surrounding areas, we help make obtaining building permits faster, easier, and far less stressful for our clients.
+            </p>
+            <p>
+              For over 12 years, we've been the trusted partner for architects, developers, sign contractors, general contractors, and homeowners throughout Southern California. In addition, we offer building code violation assistance, helping clients resolve violations and maintain full code compliance.
+            </p>
+          </div>
+
+          <!-- Quick Stats -->
+          <div class="grid grid-cols-3 gap-8 mt-10 pt-10 border-t border-neutral-100 animate-on-scroll delay-2">
+            <div>
+              <div class="text-3xl font-light text-brand-500 stat-number" data-target="500" data-suffix="+">0</div>
+              <div class="text-sm text-neutral-500 mt-1">Projects Completed</div>
+            </div>
+            <div>
+              <div class="text-3xl font-light text-brand-500 stat-number" data-target="98" data-suffix="%">0</div>
+              <div class="text-sm text-neutral-500 mt-1">Approval Rate</div>
+            </div>
+            <div>
+              <div class="text-3xl font-light text-brand-500 stat-number" data-target="24" data-suffix="hr">0</div>
+              <div class="text-sm text-neutral-500 mt-1">Response Time</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Values Section -->
+  <section class="py-20 lg:py-28 bg-neutral-50">
+    <div class="max-w-7xl mx-auto px-6 lg:px-8">
+      <div class="text-center mb-16">
+        <p class="text-brand-500 text-sm font-medium tracking-[0.2em] uppercase mb-4 animate-on-scroll">Our Values</p>
+        <h2 class="text-3xl md:text-4xl leading-tight animate-on-scroll delay-1">
+          <span class="font-medium">What Drives</span>
+          <span class="font-serif italic"> Our Success</span>
+        </h2>
+      </div>
+
+      <div class="grid md:grid-cols-3 gap-8">
+        <div class="bg-white rounded-2xl p-8 card-hover animate-on-scroll">
+          <div class="icon-gradient w-14 h-14 rounded-xl flex items-center justify-center mb-6">
+            <svg class="w-7 h-7 text-brand-500" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z" />
+            </svg>
+          </div>
+          <h3 class="text-xl font-semibold mb-3">Integrity</h3>
+          <p class="text-neutral-600 leading-relaxed">We maintain the highest ethical standards in all our dealings, ensuring transparency and honesty with every client.</p>
+        </div>
+
+        <div class="bg-white rounded-2xl p-8 card-hover animate-on-scroll delay-1">
+          <div class="icon-gradient w-14 h-14 rounded-xl flex items-center justify-center mb-6">
+            <svg class="w-7 h-7 text-brand-500" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M13 10V3L4 14h7v7l9-11h-7z" />
+            </svg>
+          </div>
+          <h3 class="text-xl font-semibold mb-3">Efficiency</h3>
+          <p class="text-neutral-600 leading-relaxed">Time is money. We streamline the permit process to minimize delays and keep your project on schedule.</p>
+        </div>
+
+        <div class="bg-white rounded-2xl p-8 card-hover animate-on-scroll delay-2">
+          <div class="icon-gradient w-14 h-14 rounded-xl flex items-center justify-center mb-6">
+            <svg class="w-7 h-7 text-brand-500" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0z" />
+            </svg>
+          </div>
+          <h3 class="text-xl font-semibold mb-3">Partnership</h3>
+          <p class="text-neutral-600 leading-relaxed">We view every client relationship as a partnership, working collaboratively to achieve your project goals.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA Section -->
+  <section class="py-20 lg:py-28 bg-brand-500">
+    <div class="max-w-4xl mx-auto px-6 lg:px-8 text-center text-white">
+      <h2 class="text-3xl md:text-4xl leading-tight mb-6">
+        <span class="font-medium">Ready to Work</span>
+        <span class="font-serif italic block">Together?</span>
+      </h2>
+      <p class="text-xl text-white/80 mb-10">
+        Let's discuss how we can help streamline your permit process.
+      </p>
+      <a href="contact.html" class="bg-white text-brand-600 hover:bg-neutral-100 px-8 py-4 rounded-full text-base font-semibold transition-all duration-300 transform hover:-translate-y-1 inline-flex items-center gap-2">
+        Get in Touch
+        <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3" />
+        </svg>
+      </a>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="bg-neutral-950 text-white pt-20 pb-8">
+    <div class="max-w-7xl mx-auto px-6 lg:px-8">
+      <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-12 lg:gap-8 mb-16">
+        <!-- Column 1: Brand -->
+        <div class="lg:col-span-2">
+          <img src="https://i0.wp.com/permitsandmore.com/wp-content/uploads/2016/06/cropped-logo-1.png?fit=263%2C60&ssl=1" alt="Permits & More" class="h-12 w-auto mb-6">
+          <p class="text-white/60 leading-relaxed max-w-md mb-6">
+            San Diego's trusted partner for building permit processing. We transform the complex into the achievable, helping you build with confidence.
+          </p>
+          <div class="flex gap-4">
+            <a href="#" class="w-10 h-10 rounded-full bg-white/10 hover:bg-brand-500 flex items-center justify-center transition-colors" aria-label="LinkedIn">
+              <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24"><path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/></svg>
+            </a>
+            <a href="#" class="w-10 h-10 rounded-full bg-white/10 hover:bg-brand-500 flex items-center justify-center transition-colors" aria-label="Facebook">
+              <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24"><path d="M9 8h-3v4h3v12h5v-12h3.642l.358-4h-4v-1.667c0-.955.192-1.333 1.115-1.333h2.885v-5h-3.808c-3.596 0-5.192 1.583-5.192 4.615v3.385z"/></svg>
+            </a>
+            <a href="#" class="w-10 h-10 rounded-full bg-white/10 hover:bg-brand-500 flex items-center justify-center transition-colors" aria-label="Instagram">
+              <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>
+            </a>
+          </div>
+        </div>
+
+        <!-- Column 2: Quick Links -->
+        <div>
+          <h4 class="font-semibold mb-6">Quick Links</h4>
+          <ul class="space-y-3">
+            <li><a href="about.html" class="text-white/60 hover:text-white transition-colors">About Us</a></li>
+            <li><a href="services.html" class="text-white/60 hover:text-white transition-colors">Services</a></li>
+            <li><a href="work.html" class="text-white/60 hover:text-white transition-colors">Projects</a></li>
+            <li><a href="newsletter.html" class="text-white/60 hover:text-white transition-colors">Newsletter</a></li>
+            <li><a href="reviews.html" class="text-white/60 hover:text-white transition-colors">Reviews</a></li>
+            <li><a href="contact.html" class="text-white/60 hover:text-white transition-colors">Contact</a></li>
+          </ul>
+        </div>
+
+        <!-- Column 3: Contact -->
+        <div>
+          <h4 class="font-semibold mb-6">Contact</h4>
+          <ul class="space-y-3 text-white/60">
+            <li><a href="tel:6193234048" class="hover:text-white transition-colors">(619) 323-4048</a></li>
+            <li><a href="mailto:info@permitsandmore.com" class="hover:text-white transition-colors">info@permitsandmore.com</a></li>
+            <li class="pt-2">9921 Carmel Mtn Road<br>#327<br>San Diego, CA 92129</li>
+          </ul>
+        </div>
+      </div>
+
+      <!-- Divider -->
+      <div class="divider-gradient mb-8"></div>
+
+      <!-- Bottom Row -->
+      <div class="flex flex-col md:flex-row justify-between items-center gap-4">
+        <p class="text-white/40 text-sm">&copy; 2026 Permits & More. All rights reserved.</p>
+        <div class="flex gap-6 text-sm">
+          <a href="#" class="text-white/40 hover:text-white transition-colors">Privacy Policy</a>
+          <a href="#" class="text-white/40 hover:text-white transition-colors">Terms of Service</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    // Mobile Menu Toggle
+    const mobileMenuBtn = document.getElementById('mobile-menu-btn');
+    const mobileMenu = document.getElementById('mobile-menu');
+    const mobileNavLinks = document.querySelectorAll('.mobile-nav-link');
+    const line1 = document.getElementById('line1');
+    const line2 = document.getElementById('line2');
+    const line3 = document.getElementById('line3');
+    let menuOpen = false;
+
+    function openMenu() {
+      menuOpen = true;
+      mobileMenu.classList.remove('opacity-0', 'pointer-events-none');
+      mobileMenu.classList.add('opacity-100', 'pointer-events-auto');
+      // Keep header logo visible
+      line1.style.top = '50%';
+      line1.style.transform = 'translateY(-50%) rotate(45deg)';
+      line2.style.opacity = '0';
+      line3.style.bottom = 'auto';
+      line3.style.top = '50%';
+      line3.style.transform = 'translateY(-50%) rotate(-45deg)';
+      line3.style.width = '1.5rem';
+      mobileNavLinks.forEach((link, index) => {
+        setTimeout(() => {
+          link.classList.remove('translate-y-4', 'opacity-0');
+          link.classList.add('translate-y-0', 'opacity-100');
+        }, 100 + (index * 80));
+      });
+    }
+
+    function closeMenu() {
+      menuOpen = false;
+      mobileNavLinks.forEach((link) => {
+        link.classList.add('translate-y-4', 'opacity-0');
+        link.classList.remove('translate-y-0', 'opacity-100');
+      });
+      // Header logo stays visible
+      line1.style.top = '0';
+      line1.style.transform = '';
+      line2.style.opacity = '1';
+      line3.style.bottom = '0';
+      line3.style.top = 'auto';
+      line3.style.transform = '';
+      line3.style.width = '1rem';
+      setTimeout(() => {
+        mobileMenu.classList.add('opacity-0', 'pointer-events-none');
+        mobileMenu.classList.remove('opacity-100', 'pointer-events-auto');
+      }, 200);
+    }
+
+    mobileMenuBtn.addEventListener('click', () => { menuOpen ? closeMenu() : openMenu(); });
+    mobileNavLinks.forEach(link => { link.addEventListener('click', closeMenu); });
+
+    // Intersection Observer for Scroll Animations
+    const observerOptions = { root: null, rootMargin: '0px', threshold: 0.1 };
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+          // Trigger counter animation for stat numbers within this element
+          const counters = entry.target.querySelectorAll('.stat-number[data-target]');
+          counters.forEach(counter => {
+            if (!counter.dataset.animated) {
+              animateCounter(counter);
+              counter.dataset.animated = 'true';
+            }
+          });
+        }
+      });
+    }, observerOptions);
+
+    document.querySelectorAll('.animate-on-scroll').forEach(el => {
+      observer.observe(el);
+    });
+
+    // Counter Animation Function
+    function animateCounter(element) {
+      const target = parseFloat(element.dataset.target);
+      const suffix = element.dataset.suffix || '';
+      const isDecimal = target % 1 !== 0;
+      const duration = 2000;
+      const step = target / (duration / 16);
+      let current = 0;
+
+      const timer = setInterval(() => {
+        current += step;
+        if (current >= target) {
+          element.textContent = (isDecimal ? target.toFixed(1) : target) + suffix;
+          clearInterval(timer);
+        } else {
+          element.textContent = (isDecimal ? current.toFixed(1) : Math.floor(current)) + suffix;
+        }
+      }, 16);
+    }
+  </script>
+</body>
+
+</html>
