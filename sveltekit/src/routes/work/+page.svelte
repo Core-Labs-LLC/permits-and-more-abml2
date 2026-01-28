@@ -87,7 +87,7 @@
 				</div>
 				<div>
 					<div class="text-4xl md:text-5xl font-light mb-2">
-						<StatCounter target={5} suffix="+" />
+						<StatCounter target={12} suffix="+" />
 					</div>
 					<div class="text-white/80">Years Experience</div>
 				</div>

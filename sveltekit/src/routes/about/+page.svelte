@@ -46,7 +46,7 @@
 						class="absolute -bottom-8 -right-8 bg-white rounded-2xl shadow-2xl p-6 lg:p-8 card-hover"
 					>
 						<div class="text-4xl lg:text-5xl font-light text-brand-500">
-							<StatCounter target={5} suffix="+" />
+							<StatCounter target={12} suffix="+" />
 						</div>
 						<div class="text-sm text-neutral-600 mt-1">Years of Excellence</div>
 					</div>

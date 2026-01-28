@@ -59,7 +59,7 @@
 	<!-- Background Image with Overlay -->
 	<div class="absolute inset-0">
 		<img
-			src="https://permits-and-more-abml.vercel.app/assets/san-diego-skyline.jpg"
+			src="/san-diego-skyline.jpg"
 			alt="City skyline at sunset"
 			class="w-full h-full object-cover parallax-bg"
 			style="transform: {heroBgTransform}"
@@ -217,7 +217,7 @@
 					<div class="grid grid-cols-3 gap-8 mt-10 pt-10 border-t border-neutral-100">
 						<div>
 							<div class="text-3xl font-light text-brand-500">
-								<StatCounter target={12} />
+								<StatCounter target={12} suffix="+" />
 							</div>
 							<div class="text-sm text-neutral-500 mt-1">Years Experience</div>
 						</div>
