@@ -55,17 +55,49 @@
 	let dragRow = null;
 	let dragStartX = 0;
 	let dragStartPos = 0;
+	
+	// Momentum/velocity tracking
+	let topVelocity = 0;
+	let bottomVelocity = 0;
+	let lastDragX = 0;
+	let lastDragTime = 0;
+	const FRICTION = 0.95; // Deceleration factor (0.95 = slows down by 5% per frame)
+	const MIN_VELOCITY = 0.1; // Stop momentum when velocity is below this
 
 	function animate() {
-		// Top row: auto-slide right
-		if (!topHovered && !(isDragging && dragRow === 'top')) {
-			topPos += SPEED;
-			if (topPos >= topSetWidth) topPos -= topSetWidth;
-		}
-		// Bottom row: auto-slide left
-		if (!bottomHovered && !(isDragging && dragRow === 'bottom')) {
-			bottomPos += SPEED;
-			if (bottomPos >= bottomSetWidth) bottomPos -= bottomSetWidth;
+		const now = performance.now();
+		
+		// Apply momentum/inertia if not dragging
+		if (!isDragging) {
+			// Top row momentum
+			if (Math.abs(topVelocity) > MIN_VELOCITY) {
+				topPos += topVelocity;
+				topVelocity *= FRICTION; // Gradually slow down
+				if (topPos >= topSetWidth) topPos -= topSetWidth;
+				if (topPos < 0) topPos += topSetWidth;
+			} else {
+				// Resume normal auto-slide right when momentum stops
+				if (!topHovered) {
+					topPos += SPEED;
+					if (topPos >= topSetWidth) topPos -= topSetWidth;
+				}
+				topVelocity = 0;
+			}
+			
+			// Bottom row momentum
+			if (Math.abs(bottomVelocity) > MIN_VELOCITY) {
+				bottomPos += bottomVelocity;
+				bottomVelocity *= FRICTION; // Gradually slow down
+				if (bottomPos >= bottomSetWidth) bottomPos -= bottomSetWidth;
+				if (bottomPos < 0) bottomPos += bottomSetWidth;
+			} else {
+				// Resume normal auto-slide left when momentum stops
+				if (!bottomHovered) {
+					bottomPos += SPEED;
+					if (bottomPos >= bottomSetWidth) bottomPos -= bottomSetWidth;
+				}
+				bottomVelocity = 0;
+			}
 		}
 
 		if (topTrack) {
@@ -82,30 +114,60 @@
 	function onDragStart(e, row) {
 		isDragging = true;
 		dragRow = row;
-		dragStartX = e.type.includes('touch') ? e.touches[0].clientX : e.clientX;
+		const clientX = e.type.includes('touch') ? e.touches[0].clientX : e.clientX;
+		dragStartX = clientX;
+		lastDragX = clientX;
+		lastDragTime = performance.now();
 		dragStartPos = row === 'top' ? topPos : bottomPos;
+		
+		// Reset velocity when starting new drag
+		if (row === 'top') {
+			topVelocity = 0;
+		} else {
+			bottomVelocity = 0;
+		}
+		
 		if (browser) document.body.style.userSelect = 'none';
 	}
 
 	function onDragMove(e) {
 		if (!isDragging) return;
 		e.preventDefault();
+		const now = performance.now();
 		const clientX = e.type.includes('touch') ? e.touches[0].clientX : e.clientX;
 		const delta = clientX - dragStartX;
+		const deltaX = clientX - lastDragX;
+		const deltaTime = now - lastDragTime;
 
 		if (dragRow === 'top') {
 			topPos = dragStartPos + delta;
 			topPos = ((topPos % topSetWidth) + topSetWidth) % topSetWidth;
+			
+			// Calculate velocity (pixels per frame, smoothed)
+			if (deltaTime > 0) {
+				const instantVelocity = (deltaX / deltaTime) * 16.67; // Convert to px/frame (assuming 60fps)
+				topVelocity = topVelocity * 0.7 + instantVelocity * 0.3; // Smooth the velocity
+			}
 		} else {
 			bottomPos = dragStartPos - delta;
 			bottomPos = ((bottomPos % bottomSetWidth) + bottomSetWidth) % bottomSetWidth;
+			
+			// Calculate velocity (inverted for bottom row since it slides opposite direction)
+			if (deltaTime > 0) {
+				const instantVelocity = (-deltaX / deltaTime) * 16.67; // Negative because bottom slides left
+				bottomVelocity = bottomVelocity * 0.7 + instantVelocity * 0.3; // Smooth the velocity
+			}
 		}
+		
+		lastDragX = clientX;
+		lastDragTime = now;
 	}
 
 	function onDragEnd() {
 		isDragging = false;
 		dragRow = null;
 		if (browser) document.body.style.userSelect = '';
+		// Velocity is already calculated and will be applied in animate()
 	}
 
 	// Yelp widget loader with retries
