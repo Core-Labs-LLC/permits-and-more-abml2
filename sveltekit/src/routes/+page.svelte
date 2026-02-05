@@ -7,6 +7,73 @@
 	let heroBgTransform = 'translateY(0px)';
 	let imgRevealed = false;
 
+	// Featured reviews (pulled from the reviews page)
+	const featuredReviews = [
+		{
+			name: 'David F.',
+			userId: 'gn1Z7f0RwSQ54ZpNGAjwJQ',
+			rating: 5,
+			text: 'Exceptional service! Permits & More made the entire process seamless and stress-free. Highly professional team.',
+			role: 'Property Developer'
+		},
+		{
+			name: 'Jess B.',
+			userId: '1sJf067TALJpHHaeDiBsPw',
+			rating: 5,
+			text: 'Permits & More exceeded expectations. Their knowledge of San Diego building codes is unmatched.',
+			role: 'Architect'
+		},
+		{
+			name: 'Christina R.',
+			userId: '0cXvUF-BYGLCKOt22RCB0A',
+			rating: 5,
+			text: 'I am grateful to Peter and his team for all their help. It is a pleasure to recommend Permits & More!',
+			role: 'Business Owner'
+		},
+		{
+			name: 'Daniel V.',
+			userId: 'jFKPJ_kgP04KwEHWHhyCRA',
+			rating: 5,
+			text: 'Professional, responsive, and incredibly efficient. They handled everything from start to finish.',
+			role: 'Homeowner'
+		},
+		{
+			name: 'Stefan M.',
+			userId: 'e5fhZb3wlKj6IcQNiHTuNA',
+			rating: 5,
+			text: 'First-time approval on a complex project! Their expertise made all the difference.',
+			role: 'Developer'
+		},
+		{
+			name: 'Mike L.',
+			userId: 'VagB7AlOZuWyDlQSgjil8g',
+			rating: 5,
+			text: "Consistent and reliable. We've completed multiple projects with them and always impressed.",
+			role: 'General Contractor'
+		}
+	];
+
+	const avatarColors = ['bg-brand-500', 'bg-brand-700', 'bg-brand-400', 'bg-brand-600', 'bg-brand-500', 'bg-brand-700'];
+
+	function getInitials(name) {
+		return name.split(' ').map((n) => n[0]).join('');
+	}
+
+	// Contact form
+	let formData = {
+		name: '',
+		email: '',
+		phone: '',
+		projectType: '',
+		message: ''
+	};
+
+	function handleSubmit(e) {
+		e.preventDefault();
+		alert('Thank you for your message! We will get back to you soon.');
+		formData = { name: '', email: '', phone: '', projectType: '', message: '' };
+	}
+
 	onMount(() => {
 		const handleScroll = () => {
 			const scrollY = window.scrollY;
@@ -531,51 +598,264 @@
 	</div>
 </section>
 
-<!-- CTA Section -->
-<section id="cta" class="relative py-24 lg:py-32 overflow-hidden">
-	<!-- Background Image -->
-	<div class="absolute inset-0">
-		<img
-			src="https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?q=80&w=2675&auto=format&fit=crop"
-			alt="Modern building exterior"
-			class="w-full h-full object-cover"
-		/>
-		<div class="absolute inset-0 bg-gradient-to-r from-brand-600/95 to-brand-500/90"></div>
-	</div>
-
-	<div class="relative z-10 max-w-7xl mx-auto px-6 lg:px-8">
-		<div class="max-w-3xl mx-auto text-center text-white">
+<!-- Social Proof / Reviews Section -->
+<section id="reviews" class="py-24 lg:py-32 bg-neutral-50">
+	<div class="max-w-7xl mx-auto px-6 lg:px-8">
+		<div class="text-center max-w-3xl mx-auto mb-16">
 			<AnimateOnScroll>
-				<h2 class="text-3xl md:text-4xl lg:text-5xl leading-tight mb-6">
-					<span class="font-medium">Ready to Start</span>
-					<span class="font-serif italic block">Your Project?</span>
-				</h2>
-			</AnimateOnScroll>
-			<AnimateOnScroll delay={1}>
-				<p class="text-xl text-white/80 mb-10">
-					Let's discuss how we can help streamline your permit process and get your project moving
-					forward.
+				<p class="text-brand-500 text-sm font-medium tracking-[0.2em] uppercase mb-4">
+					Client Testimonials
 				</p>
 			</AnimateOnScroll>
+			<AnimateOnScroll delay={1}>
+				<h2 class="text-3xl md:text-4xl lg:text-5xl leading-tight">
+					<span class="font-medium">Trusted by</span>
+					<span class="font-serif italic"> Those Who Build</span>
+				</h2>
+			</AnimateOnScroll>
 			<AnimateOnScroll delay={2}>
-				<div class="flex flex-col sm:flex-row gap-4 justify-center">
-					<a
-						href="/contact"
-						class="bg-white text-brand-600 hover:bg-neutral-100 px-8 py-4 rounded-full text-base font-semibold transition-all duration-300 transform hover:-translate-y-1 inline-flex items-center justify-center gap-2"
+				<p class="text-neutral-600 mt-6 text-lg leading-relaxed">
+					From architects to homeowners, our clients trust us to deliver results. Here's what
+					they have to say.
+				</p>
+			</AnimateOnScroll>
+		</div>
+
+		<div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+			{#each featuredReviews as review, index}
+				<AnimateOnScroll delay={index % 3}>
+					<div class="bg-white rounded-2xl p-8 card-hover h-full flex flex-col border border-neutral-100">
+						<!-- Stars -->
+						<div class="flex gap-1 mb-5">
+							{#each Array(5) as _, starIdx}
+								<svg
+									class="w-5 h-5 {starIdx < review.rating ? 'text-amber-400' : 'text-neutral-200'}"
+									fill="currentColor"
+									viewBox="0 0 20 20"
+								>
+									<path
+										d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"
+									/>
+								</svg>
+							{/each}
+						</div>
+
+						<!-- Review Text -->
+						<p class="text-neutral-700 leading-relaxed flex-1 mb-6">"{review.text}"</p>
+
+						<!-- Reviewer -->
+						<div class="flex items-center gap-4 pt-5 border-t border-neutral-200/80">
+							<div
+								class="w-11 h-11 {avatarColors[index % avatarColors.length]} rounded-full flex items-center justify-center text-white font-semibold text-sm flex-shrink-0"
+							>
+								{getInitials(review.name)}
+							</div>
+							<div class="flex-1 min-w-0">
+								<a
+									href="https://www.yelp.com/user_details?userid={review.userId}"
+									target="_blank"
+									rel="noopener noreferrer"
+									class="font-semibold text-neutral-800 hover:text-brand-500 transition-colors block"
+								>
+									{review.name}
+								</a>
+								<div class="text-neutral-500 text-sm">{review.role}</div>
+							</div>
+						</div>
+					</div>
+				</AnimateOnScroll>
+			{/each}
+		</div>
+
+		<!-- View All Reviews CTA -->
+		<AnimateOnScroll>
+			<div class="text-center mt-14">
+				<a
+					href="/reviews"
+					class="btn-primary text-white px-8 py-4 rounded-full text-base font-semibold inline-flex items-center gap-2 group"
+				>
+					Read All 15 Reviews
+					<svg
+						class="w-4 h-4 transition-transform group-hover:translate-x-1"
+						fill="none"
+						viewBox="0 0 24 24"
+						stroke="currentColor"
 					>
-						Schedule a Consultation
-						<svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-							<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3" />
-						</svg>
-					</a>
-					<a
-						href="tel:6193234048"
-						class="border-2 border-white text-white hover:bg-white hover:text-brand-600 px-8 py-4 rounded-full text-base font-semibold transition-all duration-300"
-					>
-						(619) 323-4048
-					</a>
+						<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3" />
+					</svg>
+				</a>
+			</div>
+		</AnimateOnScroll>
+	</div>
+</section>
+
+<!-- Contact Section -->
+<section id="contact" class="py-24 lg:py-32 bg-white">
+	<div class="max-w-7xl mx-auto px-6 lg:px-8">
+		<div class="text-center max-w-3xl mx-auto mb-16">
+			<AnimateOnScroll>
+				<p class="text-brand-500 text-sm font-medium tracking-[0.2em] uppercase mb-4">
+					Get in Touch
+				</p>
+			</AnimateOnScroll>
+			<AnimateOnScroll delay={1}>
+				<h2 class="text-3xl md:text-4xl lg:text-5xl leading-tight">
+					<span class="font-medium">Ready to Start</span>
+					<span class="font-serif italic"> Your Project?</span>
+				</h2>
+			</AnimateOnScroll>
+			<AnimateOnScroll delay={2}>
+				<p class="text-neutral-600 mt-6 text-lg leading-relaxed">
+					Let's discuss how we can help streamline your permit process and get your project
+					moving forward.
+				</p>
+			</AnimateOnScroll>
+		</div>
+
+		<div class="grid lg:grid-cols-5 gap-12 lg:gap-16">
+			<!-- Contact Details (left side, 2 cols) -->
+			<div class="lg:col-span-2">
+			<AnimateOnScroll>
+				<div class="space-y-8">
+					<!-- Phone -->
+					<div class="flex items-start gap-4">
+						<div class="icon-gradient w-12 h-12 rounded-xl flex items-center justify-center flex-shrink-0">
+							<svg class="w-5 h-5 text-brand-500" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+								<path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z" />
+							</svg>
+						</div>
+						<div>
+							<h3 class="font-semibold mb-1">Phone</h3>
+							<a href="tel:6193234048" class="text-brand-500 hover:text-brand-600 transition-colors">(619) 323-4048</a>
+						</div>
+					</div>
+
+					<!-- Email -->
+					<div class="flex items-start gap-4">
+						<div class="icon-gradient w-12 h-12 rounded-xl flex items-center justify-center flex-shrink-0">
+							<svg class="w-5 h-5 text-brand-500" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+								<path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
+							</svg>
+						</div>
+						<div>
+							<h3 class="font-semibold mb-1">Email</h3>
+							<a href="mailto:info@permitsandmore.com" class="text-brand-500 hover:text-brand-600 transition-colors">info@permitsandmore.com</a>
+						</div>
+					</div>
+
+					<!-- Address -->
+					<div class="flex items-start gap-4">
+						<div class="icon-gradient w-12 h-12 rounded-xl flex items-center justify-center flex-shrink-0">
+							<svg class="w-5 h-5 text-brand-500" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+								<path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
+								<path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
+							</svg>
+						</div>
+						<div>
+							<h3 class="font-semibold mb-1">Address</h3>
+							<p class="text-neutral-600">9921 Carmel Mtn Road<br />#327<br />San Diego, CA 92129</p>
+						</div>
+					</div>
+
+					<!-- Hours -->
+					<div class="flex items-start gap-4">
+						<div class="icon-gradient w-12 h-12 rounded-xl flex items-center justify-center flex-shrink-0">
+							<svg class="w-5 h-5 text-brand-500" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+								<path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
+							</svg>
+						</div>
+						<div>
+							<h3 class="font-semibold mb-1">Business Hours</h3>
+							<p class="text-neutral-600">
+								Mon – Fri: 8:00 AM – 6:00 PM<br />
+								Sat: 9:00 AM – 2:00 PM<br />
+								Sun: Closed
+							</p>
+						</div>
+					</div>
 				</div>
 			</AnimateOnScroll>
+			</div>
+
+			<!-- Contact Form (right side, 3 cols) -->
+			<div class="lg:col-span-3">
+			<AnimateOnScroll delay={1}>
+				<div class="bg-neutral-50 rounded-2xl p-8 md:p-10">
+					<h3 class="text-2xl font-semibold mb-6">Send Us a Message</h3>
+					<form on:submit={handleSubmit} class="space-y-5">
+						<div>
+							<label for="home-name" class="block text-neutral-700 font-medium mb-2 text-sm">Full Name *</label>
+							<input
+								id="home-name"
+								type="text"
+								placeholder="John Doe"
+								required
+								bind:value={formData.name}
+								class="w-full px-4 py-3 bg-white rounded-xl border border-neutral-200 focus:border-brand-500 focus:ring-2 focus:ring-brand-500/20 outline-none transition-all"
+							/>
+						</div>
+						<div class="grid md:grid-cols-2 gap-5">
+							<div>
+								<label for="home-email" class="block text-neutral-700 font-medium mb-2 text-sm">Email *</label>
+								<input
+									id="home-email"
+									type="email"
+									placeholder="john@example.com"
+									required
+									bind:value={formData.email}
+									class="w-full px-4 py-3 bg-white rounded-xl border border-neutral-200 focus:border-brand-500 focus:ring-2 focus:ring-brand-500/20 outline-none transition-all"
+								/>
+							</div>
+							<div>
+								<label for="home-phone" class="block text-neutral-700 font-medium mb-2 text-sm">Phone *</label>
+								<input
+									id="home-phone"
+									type="tel"
+									placeholder="(619) 555-0123"
+									required
+									bind:value={formData.phone}
+									class="w-full px-4 py-3 bg-white rounded-xl border border-neutral-200 focus:border-brand-500 focus:ring-2 focus:ring-brand-500/20 outline-none transition-all"
+								/>
+							</div>
+						</div>
+						<div>
+							<label for="home-project" class="block text-neutral-700 font-medium mb-2 text-sm">Project Type *</label>
+							<select
+								id="home-project"
+								required
+								bind:value={formData.projectType}
+								class="w-full px-4 py-3 bg-white rounded-xl border border-neutral-200 focus:border-brand-500 focus:ring-2 focus:ring-brand-500/20 outline-none transition-all"
+							>
+								<option value="">Select Project Type</option>
+								<option>Residential New Construction</option>
+								<option>Residential Remodel</option>
+								<option>Commercial New Construction</option>
+								<option>Commercial Tenant Improvement</option>
+								<option>Industrial</option>
+								<option>Other</option>
+							</select>
+						</div>
+						<div>
+							<label for="home-message" class="block text-neutral-700 font-medium mb-2 text-sm">Message *</label>
+							<textarea
+								id="home-message"
+								rows="4"
+								placeholder="Tell us about your project..."
+								required
+								bind:value={formData.message}
+								class="w-full px-4 py-3 bg-white rounded-xl border border-neutral-200 focus:border-brand-500 focus:ring-2 focus:ring-brand-500/20 outline-none transition-all resize-none"
+							></textarea>
+						</div>
+						<button
+							type="submit"
+							class="w-full btn-primary text-white py-4 rounded-xl font-semibold text-base"
+						>
+							Send Message
+						</button>
+					</form>
+				</div>
+			</AnimateOnScroll>
+			</div>
 		</div>
 	</div>
 </section>
