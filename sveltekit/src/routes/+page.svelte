@@ -559,10 +559,12 @@
 		<AnimateOnScroll>
 			<div class="text-center mt-14">
 				<a
-					href="/reviews"
+					href="https://www.yelp.com/biz/permits-and-more-san-diego"
+					target="_blank"
+					rel="noopener noreferrer"
 					class="btn-primary text-white px-8 py-4 rounded-full text-base font-semibold inline-flex items-center gap-2 group"
 				>
-					Read All 15 Reviews
+					Read Our Reviews on Yelp
 					<svg class="w-4 h-4 transition-transform group-hover:translate-x-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
 						<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3" />
 					</svg>
